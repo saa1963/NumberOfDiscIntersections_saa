@@ -17,6 +17,8 @@ namespace NumberOfDiscIntersections
             int n = A.Length;
             int[] sum = new int[n];
 
+            #region Помечаем точки на оси, сколько раз через них проходит правая граница кругов
+
             for (int i = 0; i < n; i++)
             {
                 int right;
@@ -32,11 +34,14 @@ namespace NumberOfDiscIntersections
 
                 sum[right]++;
             }
+            #endregion
 
+            #region Делаем суммы нарастанием
             for (int i = 1; i < n; i++)
             {
                 sum[i] += sum[i - 1];  //sum[i] means that there are sum[i] number of values that <= i;
             }
+            #endregion
 
             long ans = (long)n * (n - 1) / 2;
 
